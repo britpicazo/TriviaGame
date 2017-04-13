@@ -96,13 +96,15 @@ $(document).ready(function(){
 
 	function displayAnswer(){
 		if(sec === -1 ){
-			var correctAnswer = questions[queuePos].correctAnswer;
+			var correctIdx = "a" + questions[queuePos].correctAnswer;
 			$("#question").html("You ran out of time!");
-			$("#answer1").html("The correct answer is: ");
-			$("#answer2").html(questions[queuePos].a[correctAnswer]);
+			$("#answer1").html("The correct answer is:");
+			$("#answer2").html(questions[queuePos].correctIdx);
+			$("#answer3").empty();
+			$("#answer4").empty();
 		}
-			gameTimer();
-			displayQ();
+		var x = setTimeout(displayQ, 5000);
+		var x = setTimeout(gameTimer, 5000);
 	}
 
 	function displayResults(){
