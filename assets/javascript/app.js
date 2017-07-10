@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	var correct = 0;
-	var wrong = 0;
+	var incorrect = 0;
 	var unanswered = 0;
 	var sec = 19;
 	var queuePos = 0;
@@ -82,6 +82,8 @@ $(document).ready(function () {
 	];
 
 	function displayQ() {
+
+		
 		$("#question").html(questions[queuePos].q);
 		$("#a1").html("<button>" + questions[queuePos].a1 + "</button>");
 		$("#a2").html("<button>" + questions[queuePos].a2 + "</button>");
@@ -116,11 +118,12 @@ $(document).ready(function () {
 			$("#a4").empty();
 			incorrect++;
 		}
+
 		queuePos++;
 		clearInterval(x);
 		sec = 19;
-		x = setTimeout(displayQ, 5000);
-		x = setTimeout(gameTimer, 5000);
+		x = setTimeout(displayQ, 2000);
+		x = setTimeout(gameTimer, 2000);
 
 	}
 
@@ -128,9 +131,15 @@ $(document).ready(function () {
 		$("#question").html("Correct Answers: " + correct);
 		$("#a1").html("Incorrect Answers: " + incorrect);
 		$("#a2").html("Unanswered: " + unanswered);
+		$("#a3").empty();
+		$("#a4").empty();
+		$("#time-left").html("<h2>Time remaining: 20</h2>");
 	}
 
 	function gameTimer() {
+		if (queuePos === questions.length) {
+			displayResults();
+		}
 		$("#time-left").html("<h2>Time remaining: 20</h2>");
 		x = setInterval(function () {
 			$("#time-left").html("<h2>Time remaining: " + sec + "</h2>");
@@ -139,9 +148,6 @@ $(document).ready(function () {
 				clearInterval(x);
 				displayAnswer();
 				sec = 19;
-			}
-			else if (sec === 0 && queuePos === questions.length - 1) {
-				displayResults();
 			}
 		}, 1000);
 
