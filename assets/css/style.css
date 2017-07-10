@@ -7,7 +7,7 @@ body{
 	color: #e5e160;
 }
 
-#question, #time-left, #answer1, #answer2, #answer3, #answer4{
+#question, #time-left, #a1, #a2, #a3, #a4{
     margin: 0 25% 0 25%;
     font-size: 2em;
     font-family: 'Julius Sans One', "Times New Roman", serif;

@@ -1,15 +1,10 @@
-$(document).ready(function(){
-	var question;
-	var answer1;
-	var answer2;
-	var answer3;
-	var answer4;
-	var correctAnswer;
-	var correct;
-	var wrong;
-	var unanswered;
+$(document).ready(function () {
+	var correct = 0;
+	var wrong = 0;
+	var unanswered = 0;
 	var sec = 19;
 	var queuePos = 0;
+	var x;
 
 	var questions = [
 		q1 = {
@@ -86,56 +81,79 @@ $(document).ready(function(){
 		}
 	];
 
-	function displayQ(){
+	function displayQ() {
 		$("#question").html(questions[queuePos].q);
-		$("#answer1").html("<button>" + questions[queuePos].a1 + "</button>");
-		$("#answer2").html("<button>" + questions[queuePos].a2 + "</button>");
-		$("#answer3").html("<button>" + questions[queuePos].a3 + "</button>");
-		$("#answer4").html("<button>" + questions[queuePos].a4 + "</button>");
+		$("#a1").html("<button>" + questions[queuePos].a1 + "</button>");
+		$("#a2").html("<button>" + questions[queuePos].a2 + "</button>");
+		$("#a3").html("<button>" + questions[queuePos].a3 + "</button>");
+		$("#a4").html("<button>" + questions[queuePos].a4 + "</button>");
+
 	}
 
-	function displayAnswer(){
-		if(sec === -1 ){
+	function displayAnswer() {
+		
+		if (sec === -1) {
 			$("#question").html("You ran out of time!");
-			$("#answer1").html("The correct answer is:");
-			$("#answer2").html(questions[queuePos].correctAnswer);
-			$("#answer3").empty();
-			$("#answer4").empty();
+			$("#a1").html("The correct answer is:");
+			$("#a2").html(questions[queuePos].correctAnswer);
+			$("#a3").empty();
+			$("#a4").empty();
+			unanswered++;
 		}
-		var x = setTimeout(displayQ, 5000);
-		var x = setTimeout(gameTimer, 5000);
+		else if ($(this).text() === questions[queuePos].correctAnswer) {
+			$("#question").html("Correct!");
+			$("#a1").html("The answer is:");
+			$("#a2").html(questions[queuePos].correctAnswer);
+			$("#a3").empty();
+			$("#a4").empty();
+			correct++;
+		}
+		else if ($(this).text() != questions[queuePos].correctAnswer) {
+			$("#question").html("Incorrect!");
+			$("#a1").html("The correct answer is:");
+			$("#a2").html(questions[queuePos].correctAnswer);
+			$("#a3").empty();
+			$("#a4").empty();
+			incorrect++;
+		}
+		queuePos++;
+		clearInterval(x);
+		sec = 19;
+		x = setTimeout(displayQ, 5000);
+		x = setTimeout(gameTimer, 5000);
+
 	}
 
-	function displayResults(){
+	function displayResults() {
 		$("#question").html("Correct Answers: " + correct);
-		$("#answer1").html("Incorrect Answers: " + incorrect);
-		$("#answer2").html("Unanswered: " + unanswered);
+		$("#a1").html("Incorrect Answers: " + incorrect);
+		$("#a2").html("Unanswered: " + unanswered);
 	}
-	
-	function gameTimer(){
+
+	function gameTimer() {
 		$("#time-left").html("<h2>Time remaining: 20</h2>");
-		var x = setInterval(function(){ 
+		x = setInterval(function () {
 			$("#time-left").html("<h2>Time remaining: " + sec + "</h2>");
 			sec--;
-			if(sec === -1 && queuePos === questions.length){
+			if (sec === -1) {
 				clearInterval(x);
+				displayAnswer();
+				sec = 19;
+			}
+			else if (sec === 0 && queuePos === questions.length - 1) {
 				displayResults();
-				sec = 19;
 			}
-			else if(sec === -1){
-				clearInterval(x);
-				displayAnswer(sec);
-				queuePos++;
-				sec = 19;
-			}
-			
 		}, 1000);
-		
+
 	}
 
-	$("#start").on("click", function(){
+	$("#start").on("click", function () {
 		gameTimer();
 		displayQ();
 	});
 
+	$("#a1").on("click", displayAnswer);
+	$("#a2").on("click", displayAnswer);
+	$("#a3").on("click", displayAnswer);
+	$("#a4").on("click", displayAnswer);
 });
