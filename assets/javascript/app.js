@@ -18,7 +18,7 @@ $(document).ready(function(){
 			a2: "4",
 			a3: "5",
 			a4: "6",
-			correctAnswer: 3
+			correctAnswer: "5"
 		},
 		q2 = {
 			q: "Which is not one of the houses at Hogwarts School of Witchcraft and Wizardry?",
@@ -26,7 +26,7 @@ $(document).ready(function(){
 			a2: "Ravenclaw",
 			a3: "Snufflepuff",
 			a4: "Slytherin",
-			correctAnswer: 3
+			correctAnswer: "Snufflepuff"
 		},
 		q3 = {
 			q: "What is the symbol for Hufflepuff house?",
@@ -34,7 +34,7 @@ $(document).ready(function(){
 			a2: "Eagle",
 			a3: "Lion",
 			a4: "Snake",
-			correctAnswer: 1
+			correctAnswer: "Badger"
 		},
 		q4 = {
 			q: "What is the name of Dumbledore's phoenix?",
@@ -42,7 +42,7 @@ $(document).ready(function(){
 			a2: "Fluffy",
 			a3: "Firenze",
 			a4: "Fawkes",
-			correctAnswer: 4
+			correctAnswer: "Fawkes"
 		},
 		q5 = {
 			q: "Who destroyed the last remaining horcrux?",
@@ -50,7 +50,7 @@ $(document).ready(function(){
 			a2: "Neville Longbottom",
 			a3: "Harry Potter",
 			a4: "Ginny Weasley",
-			correctAnswer: 2
+			correctAnswer: "Neville Longbottom"
 		},
 		q6 = {
 			q: "What is the location of the Order of the Phoenix?",
@@ -58,7 +58,7 @@ $(document).ready(function(){
 			a2: "Spinner's End",
 			a3: "Shell Cottage",
 			a4: "Number Twelve, Grimauld Place",
-			correctAnswer: 4
+			correctAnswer: "Number Twelve, Grimauld Place"
 		},
 		q7 = {
 			q: "Dumbledore single-handedly defeated and imprisoned which Dark wizard before Voldemort goes on to kill him?",
@@ -66,7 +66,7 @@ $(document).ready(function(){
 			a2: "Igor Karkaroff",
 			a3: "Gellert Grindewald",
 			a4: "Amycus Carrow",
-			correctAnswer: 3
+			correctAnswer: "Gellert Grindewald"
 		},
 		q8 = {
 			q: "What is Lord Voldemort’s real name?",
@@ -74,7 +74,7 @@ $(document).ready(function(){
 			a2: "Salazar Slytherin",
 			a3: "Gellert Grindewald",
 			a4: "Morfin Gaunt",
-			correctAnswer: 1
+			correctAnswer: "Tom Marvolo Riddle"
 		},
 		q9 = {
 			q: "Which of Ron’s brothers is a Gryffindor Prefect in Harry’s first year?",
@@ -82,7 +82,7 @@ $(document).ready(function(){
 			a2: "Percy",
 			a3: "Bill",
 			a4: "Fred",
-			correctAnswer: 2
+			correctAnswer: "Percy"
 		}
 	];
 
@@ -96,10 +96,9 @@ $(document).ready(function(){
 
 	function displayAnswer(){
 		if(sec === -1 ){
-			var correctIdx = "a" + questions[queuePos].correctAnswer;
 			$("#question").html("You ran out of time!");
 			$("#answer1").html("The correct answer is:");
-			$("#answer2").html(questions[queuePos].correctIdx);
+			$("#answer2").html(questions[queuePos].correctAnswer);
 			$("#answer3").empty();
 			$("#answer4").empty();
 		}
@@ -124,9 +123,9 @@ $(document).ready(function(){
 				sec = 19;
 			}
 			else if(sec === -1){
-				queuePos++;
 				clearInterval(x);
 				displayAnswer(sec);
+				queuePos++;
 				sec = 19;
 			}
 			
