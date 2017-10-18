@@ -128,17 +128,19 @@ $(document).ready(function () {
 	}
 
 	function displayResults() {
-		$("#question").html("Correct Answers: " + correct);
-		$("#a1").html("Incorrect Answers: " + incorrect);
-		$("#a2").html("Unanswered: " + unanswered);
-		$("#a3").empty();
+		$("#question").empty();
+		$("#a1").html("Correct Answers: " + correct);
+		$("#a2").html("Incorrect Answers: " + incorrect);
+		$("#a3").html("Unanswered: " + unanswered);
 		$("#a4").empty();
-		$("#time-left").html("<h2>Time remaining: 20</h2>");
+		$("#time-left").empty();
+		
 	}
 
 	function gameTimer() {
 		if (queuePos === questions.length) {
 			displayResults();
+			return;
 		}
 		$("#time-left").html("<h2>Time remaining: 20</h2>");
 		x = setInterval(function () {
