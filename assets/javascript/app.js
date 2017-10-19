@@ -133,8 +133,7 @@ $(document).ready(function () {
 		$("#a2").html("Incorrect Answers: " + incorrect);
 		$("#a3").html("Unanswered: " + unanswered);
 		$("#a4").empty();
-		$("#time-left").empty();
-		
+		$("#time-left").empty();		
 	}
 
 	function gameTimer() {

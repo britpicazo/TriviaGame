@@ -10,7 +10,7 @@ In this assignment, you'll create a Trivia game using JavaScript for the logic a
 
 Here's a preview of the game:
 
-![](https://media.giphy.com/media/3ohhwNnMH3LcwvSkko/giphy.gif "gif")
+![](https://media.giphy.com/media/l1J9QShiGLpcNokWk/giphy.gif "gif")
 
 Click on the link to play!  
 https://britpicazo.github.io/TriviaGame/
