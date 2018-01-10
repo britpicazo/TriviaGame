@@ -6,7 +6,7 @@
 
 In this assignment, you'll create a Trivia game using JavaScript for the logic and jQuery to manipulate HTML. Be sure to layout this app with valid HTML and stylish CSS.
 
-### Getting Started
+**Getting Started**
 
 Here's a preview of the game:
 
@@ -16,7 +16,7 @@ Click on the link to play!
 https://britpicazo.github.io/TriviaGame/
 
 
-### Built With
+**Built With**
 
 * HTML5
 * CSS3
