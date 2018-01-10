@@ -122,8 +122,8 @@ $(document).ready(function () {
 		queuePos++;
 		clearInterval(x);
 		sec = 19;
-		x = setTimeout(displayQ, 2000);
-		x = setTimeout(gameTimer, 2000);
+		x = setTimeout(displayQ, 3000);
+		x = setTimeout(gameTimer, 3000);
 
 	}
 
