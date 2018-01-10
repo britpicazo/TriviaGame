@@ -1,6 +1,6 @@
 # Trivia Game
 
-## Houston Coding Boot Camp - Assignment 5
+### Houston Coding Boot Camp - Assignment 5
 
 **Instructions:**
 
